@@ -1,25 +1,23 @@
-<script setup lang="ts">
-import { reactive, onMounted } from "vue";
-
-import Grid from "./components/Grid.vue";
-import Cell from "./model/Cell"
-
-  let allCells: Cell[] = reactive([])
-
-  onMounted(()=> {
-    for(let x=0; x<8;x++){
-        for (let y=0; y<8; y++){
-            allCells.push({location: {x:x,y:y}, state: true})
-        }
-    }
-});
-</script>
-
 <template>
-  <Grid/> 
-
- 
+  <Grid :cells="allCells" /> 
 </template>
+
+<script setup lang="ts">
+  import { reactive, onMounted } from "vue";
+
+  import Grid from "./components/Grid.vue";
+  import Cell from "./model/Cell"
+
+    let allCells: Cell[] = reactive([])
+
+    onMounted(()=> {
+      for(let x=0; x<8;x++){
+          for (let y=0; y<8; y++){
+              allCells.push({location: {x:x,y:y}, state: true})
+          }
+      }
+  });
+</script>
 
 <style>
 #app {
