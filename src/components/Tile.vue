@@ -5,9 +5,14 @@
 
 
 <script lang="ts" setup>
-    import {ref} from "vue";
+    import {ref, watch, computed} from "vue";
 
-    let tileClass: string=  "living-cell"
+    
+    const props = defineProps<{
+        state:boolean
+    }>()
+
+    const tileClass=  computed(() =>props.state? "living-cell": "dead-cell")
 
 </script>
 
@@ -21,14 +26,13 @@ div[class$="cell"] {
     border-radius: 3px;
 }
 .living-cell{
-   background-color: rgb(120, 207, 181);
+   background-color: rgb(209, 231, 224);
+   transition: all 150ms ease-out;  
 }
 .dead-cell{
-    background-color: rgb(144, 179, 169);
+    background-color: rgb(75, 202, 113);
+    transition: all 150ms ease-out;
     
-}
-:hover{  
-    background-color: rgb(144, 179, 169);
 }
 
 </style>

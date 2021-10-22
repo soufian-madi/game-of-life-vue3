@@ -1,5 +1,5 @@
 <template>
-  <Grid :cells="allCells" /> 
+  <Grid :cells="allCells"  @tile:click="handelTileClick"/> 
 </template>
 
 <script setup lang="ts">
@@ -17,6 +17,10 @@
           }
       }
   });
+
+  function handelTileClick(cell: Cell){
+    cell.state=!cell.state
+  }
 </script>
 
 <style>

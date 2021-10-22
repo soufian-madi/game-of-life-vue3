@@ -1,6 +1,6 @@
 <template>
     <div class="grid">   
-            <Tile v-for="cell in cells" @click="tileClick(cell.location)"/>
+            <Tile v-for="cell in cells" @click="$emit('tile:click',cell)" :state="cell.state"/>
     </div>   
 </template>
 
@@ -15,6 +15,7 @@
     }>()
     let tiles:Coordinate[] =reactive([]);
     let counter=ref(0);
+
     
     onMounted(()=> {
         for(let x=0; x<8;x++){
