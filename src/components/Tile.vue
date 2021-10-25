@@ -3,15 +3,12 @@
     </div>
 </template>
 
-
 <script lang="ts" setup>
     import {ref, watch, computed} from "vue";
 
-    
     const props = defineProps<{
         state:boolean
     }>()
-
     const tileClass=  computed(() =>props.state? "living-cell": "dead-cell")
 
 </script>
