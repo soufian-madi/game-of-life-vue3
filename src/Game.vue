@@ -18,9 +18,8 @@
   function transition(){
       let newGeneration: Cell[] = [];
       allCells.forEach(cell => newGeneration.push(generateTranitionCell(cell)));
-      allCells.splice(0,allCells.length);
-      newGeneration.forEach(cell => allCells.push(cell));
-      console.log(newGeneration);
+      Object.assign(allCells,newGeneration);
+  
   }
   function generateTranitionCell(cell: Cell): Cell {
       const livingNeigbours = getNumberOfLivingNeighbours(cell);
