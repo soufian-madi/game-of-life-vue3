@@ -1,6 +1,7 @@
 {
   "name": "game-of-life-vue3",
   "version": "0.0.0",
+  "author": "S.Madi",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
