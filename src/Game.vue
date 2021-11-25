@@ -11,8 +11,8 @@
   import Coordinate from "./model/Coordinate";
 
   let allCells: Cell[] = reactive([])
-  const width: number= 8;
-  const height: number = 8;
+  const width: number= 50;
+  const height: number = 30;
 
     // transitions all cell to the next generation
   function transition(){
@@ -43,7 +43,7 @@
     const x= coord.x;
     const y=coord.y;
 
-    const index = x*height+y;
+    const index = x*width+y;
     return allCells[index];
   }
 
@@ -80,13 +80,13 @@
            neighbours.push(getCellAtCoord({x:x-1,y:y+1}))
         }
     }
-    return neighbours.filter(neigh => neigh.state).length;
+    return neighbours.filter(neighbour => neighbour.state).length;
 
   }
 
    onMounted(()=> {
-      for(let x=0; x<width;x++){
-          for (let y=0; y<height; y++){
+      for(let x=0; x<height;x++){
+          for (let y=0; y<width; y++){
               allCells.push({location: {x:x,y:y}, state: false});
           }
       }
