@@ -8,7 +8,8 @@ import { ref, watch, computed } from "vue";
 const props = defineProps<{
     alive: boolean
 }>()
-const tileClass = computed(() => props.alive ? "living-cell " : "dead-cell")
+// the tile class shoulb be "living-cell" if prop alive ist True and "dead-cell" else
+const tileClass = computed(() => props.alive ? "living-cell" : "dead-cell")
 
 </script>
 

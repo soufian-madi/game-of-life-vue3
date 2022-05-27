@@ -1,10 +1,10 @@
 <template>
     <div v-if="props.cells.length != 0" style="padding: 1rem;">
-        <div class="tile-row" v-for="hIndex in (height)" key="hIndex">
+        <div class="tile-row" v-for="heightIndex in (height)" key="hIndex">
             <Tile
-                v-for="wIndex in (width)"
-                @click="$emit('tile:click', props.cells[((hIndex - 1) * width) + wIndex - 1])"
-                :alive="props.cells[((hIndex - 1) * width) + wIndex - 1].state"
+                v-for="widthIndex in (width)"
+                @click="$emit('tile:click', props.cells[((heightIndex - 1) * width) + widthIndex - 1])"
+                :alive="props.cells[((heightIndex - 1) * width) + widthIndex - 1].state"
             />
         </div>
     </div>
@@ -12,7 +12,7 @@
 
 <script lang="ts" setup>
 import Tile from "./Tile.vue"
-import { onMounted, ref, reactive, computed } from "vue"
+import {computed } from "vue"
 import Cell from "../model/Cell"
 const props = defineProps<{
     cells: Cell[]
