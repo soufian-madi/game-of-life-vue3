@@ -1,14 +1,14 @@
 <template>
-    <div :class="tileClass"></div>
+    <div data-testid="tile" :class="tileClass"></div>
 </template>
 
 <script lang="ts" setup>
 import { ref, watch, computed } from "vue";
 
 const props = defineProps<{
-    state: boolean
+    alive: boolean
 }>()
-const tileClass = computed(() => props.state ? "living-cell " : "dead-cell")
+const tileClass = computed(() => props.alive ? "living-cell " : "dead-cell")
 
 </script>
 

@@ -25,7 +25,7 @@ import Grid from "./components/Grid.vue";
 import Cell from "./model/Cell"
 import Coordinate from "./model/Coordinate";
 
-let allCells: Cell[] = reactive([])
+let allCells: Cell[] = reactive([]);
 const width: number = 50;
 const height: number = 30;
 let intervalId: number;

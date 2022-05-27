@@ -4,7 +4,7 @@
             <Tile
                 v-for="wIndex in (width)"
                 @click="$emit('tile:click', props.cells[((hIndex - 1) * width) + wIndex - 1])"
-                :state="props.cells[((hIndex - 1) * width) + wIndex - 1].state"
+                :alive="props.cells[((hIndex - 1) * width) + wIndex - 1].state"
             />
         </div>
     </div>
