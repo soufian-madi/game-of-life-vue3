@@ -7,7 +7,7 @@ Vue.js Coding Dojo
 //Todo list 
 Aufgaben ausdenken und aufschreiben.
     1. in Tile.vue computed benutzen
-    2.
+    2. number of neighbours implementieren!
 Projekt auf andrena git hochladen (mit lösungs branches)
 Bekantgabe
 aws Instanzen konfigurieren & aufsetzen

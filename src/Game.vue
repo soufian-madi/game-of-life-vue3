@@ -25,7 +25,7 @@ import Grid from "./components/Grid.vue";
 import Cell from "./model/Cell"
 import Coordinate from "./model/Coordinate";
 
-let allCells: Cell[] = reactive([]);
+let allCells: Cell[][] = reactive([]);
 const width: number = 50;
 const height: number = 30;
 let intervalId: number;
@@ -43,11 +43,12 @@ function stop() {
 
 // transitions all cell to the next generation
 function transition() {
-  console.log(sliderValue);
-
-  let newGeneration: Cell[] = [];
-  allCells.forEach(cell => newGeneration.push(generateTranitionCell(cell)));
-  Object.assign(allCells, newGeneration);
+  let newCellGeneration: Cell[][] = [];
+  allCells.forEach(cellRow => {
+    newCellGeneration[cellRow[0].location.x] =[];
+    cellRow.forEach(cell => newCellGeneration[cell.location.x].push(generateTranitionCell(cell)))
+    });
+ Object.assign(allCells, newCellGeneration);
 
 }
 function generateTranitionCell(cell: Cell): Cell {
@@ -68,14 +69,6 @@ function handelTileClick(cell: Cell) {
 
 }
 
-function getCellAtCoord(coord: Coordinate): Cell {
-  const x = coord.x;
-  const y = coord.y;
-
-  const index = x * width + y;
-  return allCells[index];
-}
-
 function getNumberOfLivingNeighbours(cell: Cell): number {
   const x = cell.location.x;
   const y = cell.location.y;
@@ -86,27 +79,26 @@ function getNumberOfLivingNeighbours(cell: Cell): number {
   const hasRigt = y < width - 1;
 
   if (hasUpper) {
-    neighbours.push(getCellAtCoord({ x: x - 1, y: y }))
-    if (hasLeft)
-      neighbours.push(getCellAtCoord({ x: x - 1, y: y - 1 }))
+    neighbours.push(allCells[x-1][y]);
+    if (hasLeft) //upper left neighbour
+      neighbours.push(allCells[x-1][y-1]);
   }
-
   if (hasLower) {
-    neighbours.push(getCellAtCoord({ x: x + 1, y: y }))
-    if (hasRigt)
-      neighbours.push(getCellAtCoord({ x: x + 1, y: y + 1 }))
+    neighbours.push(allCells[x+1][y]);
+    if (hasRigt) //lower right neighbour
+      neighbours.push(allCells[x+1][y+1]);
   }
 
   if (hasLeft) {
-    neighbours.push(getCellAtCoord({ x: x, y: y - 1 }))
-    if (hasLower)
-      neighbours.push(getCellAtCoord({ x: x + 1, y: y - 1 }))
+    neighbours.push(allCells[x][y-1]);
+    if (hasLower) // lower left neighbour
+      neighbours.push(allCells[x+1][y-1]);
   }
 
   if (hasRigt) {
-    neighbours.push(getCellAtCoord({ x: x, y: y + 1 }))
-    if (hasUpper) {
-      neighbours.push(getCellAtCoord({ x: x - 1, y: y + 1 }))
+    neighbours.push(allCells[x][y+1]);
+    if (hasUpper) { // upper right neighbour
+      neighbours.push(allCells[x-1][y+1]);
     }
   }
   return neighbours.filter(neighbour => neighbour.state).length;
@@ -121,8 +113,9 @@ watch(sliderValue, () => {
 
 onMounted(() => {
   for (let x = 0; x < height; x++) {
+    allCells[x] = [];
     for (let y = 0; y < width; y++) {
-      allCells.push({ location: { x: x, y: y }, state: false });
+      allCells[x].push({ location: { x: x, y: y }, state: false });
     }
   }
 });
