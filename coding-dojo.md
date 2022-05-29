@@ -7,12 +7,10 @@ Vue.js Coding Dojo
 //Todo list 
 Aufgaben ausdenken und aufschreiben.
     1. schaut euch den code an -> momentan werden keine Zellen gerendert
-    1. in Tile.vue computed benutzen
-    2. number of neighbours implementieren!
+    2. in Tile.vue computed benutzen
+    3. number of neighbours implementieren!
 Projekt auf andrena git hochladen (mit lösungs branches)
-Bekantgabe
-aws Instanzen konfigurieren & aufsetzen
-lieferando Gutschein anfordern
+
 
 
 
