@@ -1,18 +1,18 @@
 <template>
-  <Grid :cells="allCells" @tile:click="handelTileClick" />
+  <Grid v-bind:cells="allCells" @tile:click="handelTileClick" />
   <div class="buttons-container">
     <button @click="transition">NEXT</button>
     <button @click="play">PLAY</button>
     <button @click="stop">Stop</button>
   </div>
   <div class="slider-container">
-    <p style="margin: 0px; padding-right: 2rem;">speed (ms):</p>
+    <p style="margin: 0px; padding-right: 2rem;">delay (ms):</p>
     <el-slider
       class="slider"
       :min="100"
       :max="1000"
       show-tooltip
-      v-model.number="sliderValue"
+      v-model="sliderValue"
       show-input
     ></el-slider>
   </div>
@@ -20,10 +20,8 @@
 
 <script setup lang="ts">
 import { reactive, onMounted, ref, watch } from "vue";
-
 import Grid from "./components/Grid.vue";
 import Cell from "./model/Cell"
-import Coordinate from "./model/Coordinate";
 
 let allCells: Cell[][] = reactive([]);
 const width: number = 50;

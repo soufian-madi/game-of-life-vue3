@@ -6,7 +6,8 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview",
-    "test:unit": "vitest --environment jsdom"
+    "test:unit": "vitest --environment jsdom",
+    "test": "vitest --environment jsdom"
   },
   "dependencies": {
     "element-plus": "^1.2.0-beta.3",
