@@ -1,5 +1,5 @@
 <template>
-  <Grid v-bind:cells="allCells" @tile:click="handelTileClick" />
+  <Grid v-bind:cells="[]" @tile:click="handelTileClick" />
   <div class="buttons-container">
     <button @click="transition">NEXT</button>
     <button @click="play">PLAY</button>
@@ -12,7 +12,6 @@
       :min="100"
       :max="1000"
       show-tooltip
-      v-model="sliderValue"
       show-input
     ></el-slider>
   </div>
